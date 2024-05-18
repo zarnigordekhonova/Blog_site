@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ articles.0.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .article-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 800px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        h4 {
+            color: #555;
+            margin: 10px 0 5px;
+        }
+        h6 {
+            color: #777;
+            margin: 5px 0;
+        }
+        img {
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+            width: 100%;
+        }
+        .back-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% for a in articles %}
+    <div class="article-container">
+        <h2>{{ a.category }}</h2>
+        <img src="{{ a.image.url }}" alt="Article Image">
+        <h4>TITLE</h4>
+        <p>{{ a.title }}</p>
+        <h4>Article</h4>
+        <p>{{ a.text }}</p>
+        <hr>
+        <h6>created_at:</h6> <p>{{ a.created_at }}</p>
+        <h6>updated_at:</h6> <p>{{ a.updated_at }}</p>
+    </div>
+    {% endfor %}
+    <a href="{% url 'articles:category_view' %}" class="back-button">Home</a>
+</body>
+</html>

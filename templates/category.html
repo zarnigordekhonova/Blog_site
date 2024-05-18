@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h3 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h5 {
+            color: #555;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        a button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+        a button:hover {
+            background-color: #0056b3;
+        }
+        hr {
+            width: 100%;
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h3>Choose your favorite category and read the most interesting articles ;)</h3>
+    <div class="button-container">
+        {% for c in categories %}
+            <a href="{% url 'articles:detail_view' c.pk %}">
+                <button>{{ c.name }}</button>
+            </a><br>
+        {% endfor %}
+    </div>
+    <h5>Do you want to add your article? Click on the button below then ;)</h5>
+    <a href="{% url 'articles:create_view' %}">
+        <button>Add Article</button>
+    </a>
+</body>
+</html>
