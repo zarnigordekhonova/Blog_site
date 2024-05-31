@@ -64,15 +64,8 @@
 <body>
     {% for a in articles %}
     <div class="article-container">
-        <h2>{{ a.category }}</h2>
-        <img src="{{ a.image.url }}" alt="Article Image">
-        <h4>TITLE</h4>
-        <p>{{ a.title }}</p>
-        <h4>Article</h4>
-        <p>{{ a.text }}</p>
-        <hr>
-        <h6>created_at:</h6> <p>{{ a.created_at }}</p>
-        <h6>updated_at:</h6> <p>{{ a.updated_at }}</p>
+        <a href="{%  url 'articles:detail' a.pk %}">{{ a.title }}</a>
+
     </div>
     {% endfor %}
     <a href="{% url 'articles:category_view' %}" class="back-button">Home</a>

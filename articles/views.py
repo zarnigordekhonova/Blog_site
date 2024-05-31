@@ -12,14 +12,14 @@ class CategoryView(ListView):
 
 
 
-class ArticlesDetailView(View):
+class ArticlesListView(View):
     def get(self, request, pk):
         articles = Articles.objects.filter(category=pk)
         context = {
             'articles': articles
         }
 
-        return render(request, 'detail_view.html', context=context)
+        return render(request, 'aricle_list_view.html', context=context)
 
 
 class ArticlesCreateView(CreateView):
@@ -27,3 +27,9 @@ class ArticlesCreateView(CreateView):
     template_name = 'create_view.html'
     fields = '__all__'
     success_url = reverse_lazy('articles:category_view')
+
+
+class ArticleDetailView(View):
+    def get(self, request, pk):
+        article = Articles.objects.get(pk=pk)
+        return render(request, 'detail.html', {'article': article})
